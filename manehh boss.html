@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VapeStore Omah Tuo | Handmade Coil</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #17120f;
+            color: #f5eadc;
+            overflow-x: hidden;
+        }
+
+        /* ===== BACKGROUND ===== */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(191, 135, 74, .15), transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(120, 73, 39, .12), transparent 30%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* ===== NAVBAR ===== */
+
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(23, 18, 15, .75);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(201, 153, 95, .15);
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            color: #d4a76a;
+            font-size: 22px;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #eadac6;
+            text-decoration: none;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: #d5a76c;
+        }
+
+        /* ===== HERO ===== */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 8% 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 750px;
+            animation: fadeUp 1.2s ease;
+        }
+
+        .small-title {
+            color: #c99a61;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(45px, 7vw, 90px);
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #c79b65;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: #c8b9a8;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border: 1px solid #bd8d52;
+            color: #f8ead9;
+            text-decoration: none;
+            transition: .4s;
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            background: #bd8d52;
+            color: #17120f;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(189,141,82,.25);
+        }
+
+        .hero-circle {
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            right: 5%;
+            border-radius: 50%;
+            border: 1px solid rgba(202,155,95,.3);
+            animation: rotate 18s linear infinite;
+        }
+
+        .hero-circle::before {
+            content: "";
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            border: 1px dashed rgba(202,155,95,.35);
+            top: 70px;
+            left: 70px;
+        }
+
+        /* ===== SECTION ===== */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title small {
+            color: #c99a61;
+            letter-spacing: 4px;
+        }
+
+        .section-title h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 42px;
+            margin-top: 12px;
+        }
+
+        /* ===== ABOUT ===== */
+
+        .about {
+            background: #1d1713;
+        }
+
+        .about-grid {
+            max-width: 1000px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about-grid p {
+            color: #c8b9a8;
+            line-height: 2;
+        }
+
+        /* ===== PRODUCT ===== */
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #241b16, #17120f);
+            border: 1px solid rgba(202,155,95,.2);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: .4s;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(198,150,91,.07);
+            right: -70px;
+            top: -70px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #c99a61;
+            box-shadow: 0 20px 50px rgba(0,0,0,.3);
+        }
+
+        .number {
+            font-family: 'Cinzel', serif;
+            color: #c99a61;
+            font-size: 18px;
+        }
+
+        .card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 30px;
+            margin: 20px 0;
+        }
+
+        .card p {
+            color: #bcae9f;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .price {
+            margin-top: 25px;
+            font-size: 25px;
+            color: #d8ad73;
+            font-weight: 600;
+        }
+
+        /* ===== FEATURE ===== */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .feature {
+            padding: 30px;
+            border: 1px solid rgba(202,155,95,.15);
+            text-align: center;
+            transition: .3s;
+        }
+
+        .feature:hover {
+            background: #211914;
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .feature h4 {
+            color: #d5aa73;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #aa9c8e;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        /* ===== CONTACT ===== */
+
+        .contact {
+            text-align: center;
+            background: #211914;
+        }
+
+        .contact p {
+            color: #bbaea0;
+            margin-bottom: 30px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        /* ===== FOOTER ===== */
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #81766c;
+            font-size: 12px;
+            border-top: 1px solid rgba(202,155,95,.1);
+        }
+
+        /* ===== ANIMATION ===== */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 1s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== MOBILE ===== */
+
+        @media(max-width: 768px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                text-align: center;
+                justify-content: center;
+            }
+
+            .hero-content {
+                position: relative;
+                z-index: 2;
+            }
+
+            .hero-circle {
+                opacity: .2;
+                width: 300px;
+                height: 300px;
+                right: 50%;
+                transform: translateX(50%);
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 80px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+        <div class="logo">VapeStore OMAH TUO</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#produk">Produk</a></li>
+            <li><a href="#keunggulan">Keunggulan</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                Handmade Craft • Omah Tuo
+            </div>
+
+            <h1>
+                VapeStore<br>
+                <span>OMAH TUO</span>
+            </h1>
+
+            <p>
+                Menghadirkan produk coil handmade dengan sentuhan
+                craftsmanship dan karakter khas Omah Tuo.
+                Dibuat dengan perhatian terhadap detail untuk
+                menghasilkan kualitas dan tampilan yang berkarakter.
+            </p>
+
+            <a href="#produk" class="btn">
+                LIHAT PRODUK
+            </a>
+
+            <a href="#kontak" class="btn">
+                KONTAK
+            </a>
+
+        </div>
+
+        <div class="hero-circle"></div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+        <div class="section-title reveal">
+            <small>ABOUT US</small>
+            <h2>Omah Tuo</h2>
+        </div>
+
+        <div class="about-grid reveal">
+
+            <p>
+                VapeStore Omah Tuo mengusung konsep perpaduan antara
+                nuansa tradisional dan gaya modern. Nama
+                "Omah Tuo" terinspirasi dari karakter rumah
+                tradisional yang memiliki nilai kehangatan,
+                ketelitian dan warisan craftsmanship.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRODUCTS -->
+
+    <section id="produk">
+
+        <div class="section-title reveal">
+            <small>OUR COLLECTION</small>
+            <h2>Jenis Coil</h2>
+        </div>
+
+        <div class="products">
+
+            <div class="card reveal">
+
+                <div class="number">01</div>
+
+                <h3>FUSED</h3>
+
+                <p>
+                    Coil dengan karakteristik konstruksi fused
+                    yang dirancang dengan detail dan craftsmanship
+                    untuk memberikan tampilan produk yang rapi
+                    dan konsisten.
+                </p>
+
+                <div class="price">
+                    Rp 30.000
+                </div>
+
+            </div>
+
+
+            <div class="card reveal">
+
+                <div class="number">02</div>
+
+                <h3>BABY ALIEN</h3>
+
+                <p>
+                    Varian Baby Alien dengan konstruksi dan
+                    tampilan yang memiliki karakter visual
+                    khas. Setiap produk dibuat dengan
+                    memperhatikan detail pengerjaan.
+                </p>
+
+                <div class="price">
+                    Rp 30.000
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section id="keunggulan">
+
+        <div class="section-title reveal">
+            <small>WHY US</small>
+            <h2>Keunggulan</h2>
+        </div>
+
+        <div class="features">
+
+            <div class="feature reveal">
+                <div class="feature-icon">✦</div>
+                <h4>Handmade</h4>
+                <p>
+                    Setiap produk memiliki sentuhan
+                    craftsmanship dan dikerjakan dengan detail.
+                </p>
+            </div>
+
+            <div class="feature reveal">
+                <div class="feature-icon">◆</div>
+                <h4>Detail</h4>
+                <p>
+                    Mengutamakan kerapian dan konsistensi
+                    pada setiap pengerjaan.
+                </p>
+            </div>
+
+            <div class="feature reveal">
+                <div class="feature-icon">⌂</div>
+                <h4>Omah Tuo</h4>
+                <p>
+                    Identitas brand yang menggabungkan
+                    nuansa tradisional dengan estetika modern.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="contact" id="kontak">
+
+        <div class="section-title reveal">
+            <small>GET IN TOUCH</small>
+            <h2>Hubungi Kami</h2>
+        </div>
+
+        <p class="reveal">
+            Untuk informasi lebih lanjut mengenai produk dan
+            ketersediaan, silakan hubungi kontak resmi kami.
+        </p>
+
+        <div class="contact-links reveal">
+
+            <a
+                href="https://wa.me/6289654075357"
+                target="_blank"
+                class="btn">
+                WhatsApp
+            </a>
+
+            <a
+                href="https://www.instagram.com/dpaaaaap?stkn=MTZtNzdycnhmamZhNw=="
+                target="_blank"
+                class="btn">
+                Instagram
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+        © 2026 VapeStore Omah Tuo — Handmade Craft
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        const reveals = document.querySelectorAll(".reveal");
+
+        function revealOnScroll() {
+
+            reveals.forEach(element => {
+
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add("active");
+                }
+
+            });
+
+        }
+
+        window.addEventListener("scroll", revealOnScroll);
+
+        revealOnScroll();
+
+    </script>
+
+</body>
+</html>
